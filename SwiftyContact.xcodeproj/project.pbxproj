@@ -8,20 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		961C8BFD228F2F7E00886EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C8BFC228F2F7E00886EE7 /* AppDelegate.swift */; };
-		961C8BFF228F2F7E00886EE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C8BFE228F2F7E00886EE7 /* ViewController.swift */; };
 		961C8C02228F2F7E00886EE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 961C8C00228F2F7E00886EE7 /* Main.storyboard */; };
 		961C8C04228F2F8000886EE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 961C8C03228F2F8000886EE7 /* Assets.xcassets */; };
 		961C8C07228F2F8000886EE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 961C8C05228F2F8000886EE7 /* LaunchScreen.storyboard */; };
+		961C8C0F228F300E00886EE7 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C8C0E228F300E00886EE7 /* ListTableViewController.swift */; };
+		961C8C11228F380300886EE7 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C8C10228F380300886EE7 /* ContactTableViewCell.swift */; };
+		96CBF746228F43010092AAE6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF745228F43010092AAE6 /* DetailViewController.swift */; };
+		96CBF76322902A2B0092AAE6 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76222902A2B0092AAE6 /* Config.swift */; };
+		96CBF76622902A940092AAE6 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76522902A940092AAE6 /* ActivityIndicator.swift */; };
+		96CBF76822902AAC0092AAE6 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76722902AAC0092AAE6 /* AlertView.swift */; };
+		96CBF76B22902AD20092AAE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76922902AD10092AAE6 /* Model.xcdatamodeld */; };
+		96CBF76D22902B3B0092AAE6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76C22902B3B0092AAE6 /* Reachability.swift */; };
+		96CBF77022902B550092AAE6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF76F22902B550092AAE6 /* Contact.swift */; };
+		96CBF77222902B680092AAE6 /* AllContactStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF77122902B680092AAE6 /* AllContactStruct.swift */; };
+		96CBF775229031A20092AAE6 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF774229031A20092AAE6 /* ContactService.swift */; };
+		96CBF777229054CA0092AAE6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CBF776229054CA0092AAE6 /* Extensions.swift */; };
+		EBA36BB976A9F166B6FCD36F /* Pods_SwiftyContact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0925CE56C60C42CE2FC48314 /* Pods_SwiftyContact.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0925CE56C60C42CE2FC48314 /* Pods_SwiftyContact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyContact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FDE2FEE9E575C77F1EF25D5 /* Pods-SwiftyContact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyContact.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyContact/Pods-SwiftyContact.debug.xcconfig"; sourceTree = "<group>"; };
 		961C8BF9228F2F7E00886EE7 /* SwiftyContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		961C8BFC228F2F7E00886EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		961C8BFE228F2F7E00886EE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		961C8C01228F2F7E00886EE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		961C8C03228F2F8000886EE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		961C8C06228F2F8000886EE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		961C8C08228F2F8000886EE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		961C8C0E228F300E00886EE7 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		961C8C10228F380300886EE7 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		96CBF745228F43010092AAE6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		96CBF76222902A2B0092AAE6 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		96CBF76522902A940092AAE6 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		96CBF76722902AAC0092AAE6 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		96CBF76A22902AD10092AAE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		96CBF76C22902B3B0092AAE6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		96CBF76F22902B550092AAE6 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		96CBF77122902B680092AAE6 /* AllContactStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactStruct.swift; sourceTree = "<group>"; };
+		96CBF774229031A20092AAE6 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
+		96CBF776229054CA0092AAE6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		96CBF77A22905B670092AAE6 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		96CBF77B22905B670092AAE6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		96CBF77C22905B670092AAE6 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		96CBF77D22905B680092AAE6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		96CBF77E22905B680092AAE6 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		96CBF77F22905B680092AAE6 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		96CBF78022905B680092AAE6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		96CBF78122905B680092AAE6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		96CBF78222905B680092AAE6 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		96CBF78322905B680092AAE6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		96CBF78422905B680092AAE6 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		96CBF78522905B680092AAE6 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		AB7EC6B56EB41EC6E3C06654 /* Pods-SwiftyContact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyContact.release.xcconfig"; path = "Target Support Files/Pods-SwiftyContact/Pods-SwiftyContact.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +67,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBA36BB976A9F166B6FCD36F /* Pods_SwiftyContact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86DE6B9F548580DBAD2BC8B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FDE2FEE9E575C77F1EF25D5 /* Pods-SwiftyContact.debug.xcconfig */,
+				AB7EC6B56EB41EC6E3C06654 /* Pods-SwiftyContact.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		961C8BF0228F2F7E00886EE7 = {
 			isa = PBXGroup;
 			children = (
 				961C8BFB228F2F7E00886EE7 /* SwiftyContact */,
 				961C8BFA228F2F7E00886EE7 /* Products */,
+				86DE6B9F548580DBAD2BC8B6 /* Pods */,
+				B3A17C2054C281079B82F542 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +105,108 @@
 			isa = PBXGroup;
 			children = (
 				961C8BFC228F2F7E00886EE7 /* AppDelegate.swift */,
-				961C8BFE228F2F7E00886EE7 /* ViewController.swift */,
-				961C8C00228F2F7E00886EE7 /* Main.storyboard */,
-				961C8C03228F2F8000886EE7 /* Assets.xcassets */,
-				961C8C05228F2F8000886EE7 /* LaunchScreen.storyboard */,
+				96CBF748228F431A0092AAE6 /* contact-list */,
+				96CBF747228F430F0092AAE6 /* contact-detail */,
+				96CBF73C228F3FA40092AAE6 /* contact-ui */,
+				96CBF73D228F3FB20092AAE6 /* contactAssets */,
 				961C8C08228F2F8000886EE7 /* Info.plist */,
+				96CBF76922902AD10092AAE6 /* Model.xcdatamodeld */,
+				96CBF76C22902B3B0092AAE6 /* Reachability.swift */,
+				96CBF76222902A2B0092AAE6 /* Config.swift */,
+				96CBF774229031A20092AAE6 /* ContactService.swift */,
+				96CBF776229054CA0092AAE6 /* Extensions.swift */,
+				96CBF76E22902B480092AAE6 /* Model */,
+				96CBF76422902A810092AAE6 /* View-Model */,
 			);
 			path = SwiftyContact;
+			sourceTree = "<group>";
+		};
+		96CBF73C228F3FA40092AAE6 /* contact-ui */ = {
+			isa = PBXGroup;
+			children = (
+				961C8C00228F2F7E00886EE7 /* Main.storyboard */,
+				961C8C05228F2F8000886EE7 /* LaunchScreen.storyboard */,
+			);
+			path = "contact-ui";
+			sourceTree = "<group>";
+		};
+		96CBF73D228F3FB20092AAE6 /* contactAssets */ = {
+			isa = PBXGroup;
+			children = (
+				961C8C03228F2F8000886EE7 /* Assets.xcassets */,
+				96CBF77822905B450092AAE6 /* Resources */,
+			);
+			path = contactAssets;
+			sourceTree = "<group>";
+		};
+		96CBF747228F430F0092AAE6 /* contact-detail */ = {
+			isa = PBXGroup;
+			children = (
+				96CBF745228F43010092AAE6 /* DetailViewController.swift */,
+			);
+			path = "contact-detail";
+			sourceTree = "<group>";
+		};
+		96CBF748228F431A0092AAE6 /* contact-list */ = {
+			isa = PBXGroup;
+			children = (
+				961C8C0E228F300E00886EE7 /* ListTableViewController.swift */,
+				961C8C10228F380300886EE7 /* ContactTableViewCell.swift */,
+			);
+			path = "contact-list";
+			sourceTree = "<group>";
+		};
+		96CBF76422902A810092AAE6 /* View-Model */ = {
+			isa = PBXGroup;
+			children = (
+				96CBF76522902A940092AAE6 /* ActivityIndicator.swift */,
+				96CBF76722902AAC0092AAE6 /* AlertView.swift */,
+			);
+			path = "View-Model";
+			sourceTree = "<group>";
+		};
+		96CBF76E22902B480092AAE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96CBF76F22902B550092AAE6 /* Contact.swift */,
+				96CBF77122902B680092AAE6 /* AllContactStruct.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96CBF77822905B450092AAE6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				96CBF77922905B520092AAE6 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		96CBF77922905B520092AAE6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				96CBF77A22905B670092AAE6 /* Roboto-Black.ttf */,
+				96CBF78522905B680092AAE6 /* Roboto-BlackItalic.ttf */,
+				96CBF78322905B680092AAE6 /* Roboto-Bold.ttf */,
+				96CBF77E22905B680092AAE6 /* Roboto-BoldItalic.ttf */,
+				96CBF78422905B680092AAE6 /* Roboto-Italic.ttf */,
+				96CBF77B22905B670092AAE6 /* Roboto-Light.ttf */,
+				96CBF77F22905B680092AAE6 /* Roboto-LightItalic.ttf */,
+				96CBF78122905B680092AAE6 /* Roboto-Medium.ttf */,
+				96CBF78222905B680092AAE6 /* Roboto-MediumItalic.ttf */,
+				96CBF78022905B680092AAE6 /* Roboto-Regular.ttf */,
+				96CBF77C22905B670092AAE6 /* Roboto-Thin.ttf */,
+				96CBF77D22905B680092AAE6 /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B3A17C2054C281079B82F542 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0925CE56C60C42CE2FC48314 /* Pods_SwiftyContact.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 961C8C0B228F2F8000886EE7 /* Build configuration list for PBXNativeTarget "SwiftyContact" */;
 			buildPhases = (
+				777E5A4A430900DA7BEC2D7D /* [CP] Check Pods Manifest.lock */,
 				961C8BF5228F2F7E00886EE7 /* Sources */,
 				961C8BF6228F2F7E00886EE7 /* Frameworks */,
 				961C8BF7228F2F7E00886EE7 /* Resources */,
+				E65B61B12F4070B2D02B28C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +277,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		777E5A4A430900DA7BEC2D7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyContact-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E65B61B12F4070B2D02B28C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftyContact/Pods-SwiftyContact-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftyContact/Pods-SwiftyContact-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		961C8BF5228F2F7E00886EE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				961C8BFF228F2F7E00886EE7 /* ViewController.swift in Sources */,
+				96CBF77222902B680092AAE6 /* AllContactStruct.swift in Sources */,
+				961C8C11228F380300886EE7 /* ContactTableViewCell.swift in Sources */,
+				961C8C0F228F300E00886EE7 /* ListTableViewController.swift in Sources */,
+				96CBF77022902B550092AAE6 /* Contact.swift in Sources */,
+				96CBF76822902AAC0092AAE6 /* AlertView.swift in Sources */,
+				96CBF76B22902AD20092AAE6 /* Model.xcdatamodeld in Sources */,
+				96CBF76322902A2B0092AAE6 /* Config.swift in Sources */,
+				96CBF76D22902B3B0092AAE6 /* Reachability.swift in Sources */,
+				96CBF777229054CA0092AAE6 /* Extensions.swift in Sources */,
+				96CBF775229031A20092AAE6 /* ContactService.swift in Sources */,
 				961C8BFD228F2F7E00886EE7 /* AppDelegate.swift in Sources */,
+				96CBF76622902A940092AAE6 /* ActivityIndicator.swift in Sources */,
+				96CBF746228F43010092AAE6 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +491,7 @@
 		};
 		961C8C0C228F2F8000886EE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FDE2FEE9E575C77F1EF25D5 /* Pods-SwiftyContact.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +510,7 @@
 		};
 		961C8C0D228F2F8000886EE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB7EC6B56EB41EC6E3C06654 /* Pods-SwiftyContact.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -336,6 +549,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		96CBF76922902AD10092AAE6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				96CBF76A22902AD10092AAE6 /* Model.xcdatamodel */,
+			);
+			currentVersion = 96CBF76A22902AD10092AAE6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 961C8BF1228F2F7E00886EE7 /* Project object */;
 }

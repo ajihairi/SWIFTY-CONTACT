@@ -9,9 +9,13 @@
 import UIKit
 
 class ContactTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var contactAgeLabel: UILabel!
+    @IBOutlet weak var contactImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        contactImageView.setRounded()
         // Initialization code
     }
 
