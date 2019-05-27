@@ -20,6 +20,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     var base64Img: String?
     var currentContact: ContactField?
     var contactID: String?
+    var isbase64: Bool?
+    var indexPath: IndexPath?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +37,46 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view.
     }
     
+    private func setupAvatar(){
+        if let dataDecoded: Data = Data(base64Encoded: currentContact!.photo, options: .ignoreUnknownCharacters) {
+            let decodedImg = UIImage(data: dataDecoded)
+            let newSizeImg = decodedImg?.resizeWithWidth(width: 1000)
+            let imgData:Data = newSizeImg?.jpegData(compressionQuality: 1.0) ?? Data(count: 10)
+            let decompressedImg = UIImage(data: imgData)
+            let decompressedData = decompressedImg?.pngData()
+            let dataForRender = UIImage(data: decompressedData ?? Data(capacity: 10))
+            contactImage.image = dataForRender != nil ? dataForRender : UIImage(named: "defaultAvatar")
+            contactImage.contentMode = .scaleToFill
+        } else {
+            print("not base64")
+            isbase64 = false
+        }
+    }
+    
+    private func deleteContactById(id: String, indexPath: IndexPath){
+        progressBarDisplayer(deleteExistingContactIndicatorMsg, removing: false, superView: self.view)
+        ContactService.deleteExistingContact(baseUrl, id: id, httpMethod: "DELETE") { (error, result, resultData) in
+            DispatchQueue.main.async {
+                progressBarDisplayer("", removing: true, superView: self.view)
+                
+                if (error == nil && result == true){
+                    allContacts.removeAtIndex(index: indexPath.row)
+                } else {
+                    let responseString = String(data: resultData!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+                    print(responseString)
+                    self.present(createAlertWithOnlyOkay(title: "Error", msg: responseString ?? errorMessage, style: .alert, callBackSelf: self), animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
     func setUpExistingContactDetails(contact:ContactField) {
         self.title = contact.firstName + " " + contact.LastName
         firstNameField.text = contact.firstName
         lastNameField.text = contact.LastName
         ageField.text = String(contact.age)
-        if contact.photo.count < 5 {
+        if contact.photo.count < 15 || contactImage.image == UIImage(named: "defaultAvatar") {
+            self.contactImage.downloaded(from: contact.photo)
             let label = contact.firstName.count > 0
                 ? contact.firstName.prefix(1).uppercased() + contact.LastName.prefix(1).uppercased()
                 : "#"
@@ -52,8 +88,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                                            textAttributes: [NSAttributedString.Key.font : UIFont(name: "Roboto-Medium.ttf", size: 32) ?? UIFont.systemFont(ofSize: 120),NSAttributedString.Key.foregroundColor : UIColor.white ])
         } else {
             self.contactImage.downloaded(from: contact.photo)
-            self.contactImage.contentMode = .scaleAspectFill
         }
+        setupAvatar()
+        self.contactImage.contentMode = .scaleAspectFill
     }
     
     @IBAction func addImageAction(_ sender: UIButton) {
@@ -101,11 +138,11 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             contactImage.contentMode = .scaleAspectFill
             let resizeImg = pickedImage.resizeWithWidth(width: 50)!
             let imageData:Data = resizeImg.jpegData(compressionQuality: 0.5)!
-//            let compressedImg = UIImage(data: imageData)
-//            contactImage.image = compressedImg
-            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            let compressedImg = UIImage(data: imageData)!
+            let compressedData: Data = compressedImg.pngData()!
+            contactImage.image = UIImage(data: compressedData)
+            let strBase64 = compressedData.base64EncodedString(options: .lineLength64Characters)
             base64Img = strBase64
-            print(base64Img)
             
            
         }
@@ -115,17 +152,37 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     @IBAction func trashAction(_ sender: Any) {
+        deleteContactById(id: self.contactID!, indexPath: self.indexPath!)
     }
     @IBAction func saveAction(_ sender: Any) {
         saveContact()
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField.tag {
+        case 1:
+            firstNameField.becomeFirstResponder()
+        case 2:
+            lastNameField.becomeFirstResponder()
+        case 3:
+            ageField.becomeFirstResponder()
+        case 4:
+            addImageOutlet.resignFirstResponder()
+            
+        default:
+            textField.resignFirstResponder()
+        }
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func textfieddidchanged(_ sender: UITextField) {
         if (sender as AnyObject).tag == 1 {
             self.title = (sender).text
         }
         
         guard firstNameField.text != "" && lastNameField.text != ""  && ageField.text != "" else {
-            self.saveOutlet.isEnabled = true
+            self.saveOutlet.isEnabled = false
             return
         }
         
@@ -135,7 +192,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             guard  temp.firstName != firstNameField.text || temp.LastName != lastNameField.text || String(temp.age) != ageField.text || temp.photo != "put photo"
                 else {
-                self.saveOutlet.isEnabled = true
+                self.saveOutlet.isEnabled = false
                 return
             }
             self.saveOutlet.isEnabled = true
@@ -144,43 +201,44 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     private func saveContact() {
         if let _ = currentContact, let tempId = contactID{
-//            progressBarDisplayer(updateExistingContactIndicatorMsg, removing: false, superView: self.view)
-//            let conts = ContactField(id: "", firstName: firstNameField.text, LastName: lastNameField.text, age:(ageField.text! as NSString).integerValue, photo: "isi fotoooo")
-//            ContactService.updateExistingContact(baseUrl, id: tempId, contact: conts, httpMethod: "PUT", getBack: { [weak weakSelf = self] (error, result, resultData) in
-//                DispatchQueue.main.async {
-//                    progressBarDisplayer("", removing: true, superView: self.view)
-//                    if (error == nil && result == true){
-//                        do {
-//                            let jsonResult = try JSONSerialization.jsonObject(with: resultData!, options: []) as! NSDictionary
-//                            print(jsonResult)
+            progressBarDisplayer(updateExistingContactIndicatorMsg, removing: false, superView: self.view)
+            let conts = postContact(firstName: firstNameField.text, lastName: lastNameField.text, age:(ageField.text! as NSString).integerValue, photo: base64Img != "" ? base64Img : currentContact?.photo)
+            ContactService.updateExistingContact(baseUrl, id: tempId, contact: conts, httpMethod: "PUT", getBack: { [weak weakSelf = self] (error, result, resultData) in
+                DispatchQueue.main.async {
+                    progressBarDisplayer("", removing: true, superView: self.view)
+                    if (error == nil && result == true){
+                        do {
+                            let jsonResult = try JSONSerialization.jsonObject(with: resultData!, options: []) as! NSDictionary
+                            print("ini json update rsult",jsonResult)
 //                            let dictId = jsonResult["id"] as? [String:Any]
-////                                let cont = Employee(name: jsonResult["name"] as! String?, contactNumber: jsonResult["contactNumber"] as! Int?, salary: jsonResult["salary"] as! Int?, designation: jsonResult["designation"] as! String?)
-//                            let cont = ContactField(id: <#T##String?#>, firstName: <#T##String?#>, LastName: <#T##String?#>, age: <#T##Int?#>, photo: <#T##String?#>)
-//
-//                                for i in (0..<allEmployees.array.count){
-//                                    if allEmployees[i].value(forKey: "id") as! String == (weakSelf?.employeeId!)! as String{
-//                                        let tempDict = ["id":dictId["$oid"],"object":emp]
-//                                        allEmployees.setObject(obj: tempDict as AnyObject, index: i)
+                            let cont = ContactField(id: "", firstName: conts.firstName, LastName: conts.lastName, age: conts.age, photo: conts.photo)
+
+                                for i in (0..<allContacts.array.count){
+//                                    if allContacts[i].value(forKey: "id") as! String == (weakSelf?.contactID!)! as String{
+                                        let tempDict = ["object":cont]
+                                        allContacts.setObject(obj: tempDict as AnyObject, index: i)
 //                                        //allEmployees[i] = tempDict as AnyObject
 //                                        break
 //                                    }
-//                                }
-//                            _ = weakSelf?.navigationController?.popViewController(animated: true)
-//
-//                        } catch let error as NSError {
-//                            print(error.localizedDescription)
-//                            self.present(createAlertWithOnlyOkay(title: "Error", msg: error.localizedDescription, style: .alert, callBackSelf: self), animated: true) {
-//                            }
-//                        }
-//                    }
-//                    else
-//                    {
-//                        print(error?.localizedDescription ?? errorMessage)
-//                        self.present(createAlertWithOnlyOkay(title: "Error", msg: (error?.localizedDescription ?? errorMessage), style: .alert, callBackSelf: self), animated: true) {
-//                        }
-//                    }
-//                }
-//            })
+                                }
+                            _ = weakSelf?.navigationController?.popViewController(animated: true)
+
+                        } catch let error as NSError {
+                            print(error.localizedDescription)
+                            self.present(createAlertWithOnlyOkay(title: "Error", msg: error.localizedDescription, style: .alert, callBackSelf: self), animated: true) {
+                            }
+                        }
+                    }
+                    else
+                    {
+                        print(error?.localizedDescription ?? errorMessage)
+                        let responseString = String(data: resultData!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+                        print(responseString)
+                        self.present(createAlertWithOnlyOkay(title: "Error", msg: (responseString ?? errorMessage), style: .alert, callBackSelf: self), animated: true) {
+                        }
+                    }
+                }
+            })
         }
         else{
             progressBarDisplayer(createNewContactIndicatorMsg, removing: false, superView: self.view)
@@ -214,7 +272,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 {
                     print(error?.localizedDescription ?? errorMessage)
                     DispatchQueue.main.async {
-                        self.present(createAlertWithOnlyOkay(title: "Error", msg: error?.localizedDescription ?? errorMessage, style: .alert, callBackSelf: self), animated: true) {
+                        let responseString = String(data: resultData!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+                        print(responseString)
+                        self.present(createAlertWithOnlyOkay(title: "Error", msg: responseString ?? errorMessage, style: .alert, callBackSelf: self), animated: true) {
                         }
                     }
                 }

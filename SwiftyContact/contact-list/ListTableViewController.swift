@@ -32,13 +32,18 @@ class ListTableViewController: UITableViewController {
         
         refreshOutlet.addTarget(self, action: #selector(refreshAction(sender:)), for: .valueChanged)
         refreshOutlet.attributedTitle = NSAttributedString(string: "pull to refresh")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         getAllContact()
         self.tableView.reloadData()
     }
     
-    
     @objc func refreshAction(sender: Any){
         getAllContact()
+        self.tableView.reloadData()
         refreshOutlet.endRefreshing()
     }
 
@@ -90,6 +95,7 @@ class ListTableViewController: UITableViewController {
         let obj = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactDetailVC") as! DetailViewController
         obj.currentContact = allContacts[indexPath.row].value(forKey: "object") as? ContactField
         obj.contactID = obj.currentContact?.id
+        obj.indexPath = indexPath
         self.navigationController?.pushViewController(obj, animated: true)
     }
     

@@ -76,7 +76,7 @@ struct AllContactStruct<T> {
     func saveIt(element:T){
         let conts = ContactData(context:context)
         if let tempDict = element as? Dictionary<String, AnyObject>{
-//            conts.id = tempDict["id"] as! String?
+            conts.id = tempDict["id"] as! String?
             if let tempContact = tempDict["object"] as? ContactField{
                 conts.id = tempContact.id
                 conts.firstName = tempContact.firstName
@@ -90,9 +90,9 @@ struct AllContactStruct<T> {
     
     func updateIt(element:T){
         if let tempDict = element as? Dictionary<String, AnyObject>{
-            let id = tempDict["id"] as! String
+//            let id = tempDict["id"] as! String
             let fetchRequest: NSFetchRequest<ContactData> = ContactData.fetchRequest()
-            fetchRequest.predicate = NSPredicate.init(format: "",id)
+//            fetchRequest.predicate = NSPredicate.init(format: "",id)
             if let result = try? context.fetch(fetchRequest) {
                 for object in result {
                     if let tempContact = tempDict["object"] as? ContactField{

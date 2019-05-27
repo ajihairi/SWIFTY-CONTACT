@@ -86,7 +86,7 @@ class ContactService {
         
     }
     
-    class func updateExistingContact(_ url:URL,id:String, contact:ContactField,httpMethod:NSString, getBack: @escaping (_ error:NSError?,_ result:Bool,_ resultData:Data?) -> ()){
+    class func updateExistingContact(_ url:URL,id:String, contact:postContact,httpMethod:NSString, getBack: @escaping (_ error:NSError?,_ result:Bool,_ resultData:Data?) -> ()){
         
         let strUrl = url.absoluteString + id
         
@@ -111,8 +111,8 @@ class ContactService {
                         return
                     }
                     
-                    if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 200 {
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 201 {
+                        print("statusCode should be 201, but is \(httpStatus.statusCode)")
                         print("response = \(String(describing: response))")
                         getBack (error as NSError?, false, Data)
                     }
@@ -133,6 +133,7 @@ class ContactService {
     class func deleteExistingContact(_ url:URL,id:String,httpMethod:NSString, getBack: @escaping (_ error:NSError?,_ result:Bool,_ resultData:Data?) -> ()){
         
         let strUrl = url.absoluteString + id
+        print(strUrl)
         
         var request = URLRequest(url: URL(string: strUrl)!, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringCacheData, timeoutInterval: timeout)
         
@@ -149,14 +150,14 @@ class ContactService {
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+            if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 202 {
+                print("statusCode should be 202, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
                 getBack (error as NSError?, false, Data)
             }
             else {
-                // let responseString = NSString(data: Data!, encoding: String.Encoding.utf8.rawValue)
-                // print("responseString = \(responseString!)")
+//                 let responseString = NSString(data: Data!, encoding: String.Encoding.utf8.rawValue)
+//                 print("responseString = \(responseString!)")
                 getBack (nil,true,Data!)
             }
             
